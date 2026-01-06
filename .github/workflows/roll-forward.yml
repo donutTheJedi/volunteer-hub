@@ -1,0 +1,36 @@
+name: Roll Forward Opportunities
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Run every hour
+  workflow_dispatch:
+
+jobs:
+  roll-forward:
+    name: Roll Forward Recurring Opportunities
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Call roll-forward endpoint (with retries)
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          set -euo pipefail
+          echo "Triggering roll-forward at $(date -u)"
+          for i in 1 2 3; do
+            STATUS=$(curl -L -sS -m 25 -X POST "$NEXT_PUBLIC_SITE_URL/api/cron" \
+              -H "Authorization: Bearer $CRON_SECRET" \
+              -H "Content-Type: application/json" \
+              -H "x-supabase-url: $NEXT_PUBLIC_SUPABASE_URL" \
+              -H "x-supabase-service-role-key: $SUPABASE_SERVICE_ROLE_KEY" \
+              -d '{"job":"roll-forward-opportunities"}' -o /tmp/resp.json -w "%{http_code}") || true
+            echo "Response body:"; cat /tmp/resp.json | tee /dev/stderr || true
+            echo "HTTP status: $STATUS"
+            if [ "$STATUS" -ge 200 ] && [ "$STATUS" -lt 300 ]; then
+              echo "Success on attempt $i"; exit 0; fi
+            echo "Attempt $i failed (HTTP $STATUS); retrying in 10s..."; sleep 10;
+          done
+          echo "All attempts failed"; exit 1

@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+/* Voluna Color Palette - CSS Custom Properties */
+:root {
+  /* Primary Colors */
+  --voluna-light-blue: #8ecae6;
+  --voluna-medium-blue: #219ebc;
+  --voluna-dark-blue: #023047;
+  --voluna-golden-yellow: #ffb703;
+  --voluna-dusty-rose: #C32937;
+  
+  /* Semantic Color Mappings */
+  --voluna-primary: var(--voluna-dark-blue);
+  --voluna-secondary: var(--voluna-medium-blue);
+  --voluna-accent: var(--voluna-dusty-rose);
+  --voluna-accent-hover: #a01e2a;
+  --voluna-background: var(--voluna-light-blue);
+  --voluna-text: var(--voluna-dark-blue);
+  --voluna-text-light: #ffffff;
+  
+  /* Utility Colors */
+  --voluna-border: var(--voluna-medium-blue);
+  --voluna-hover: var(--voluna-light-blue);
+  --voluna-shadow: rgba(2, 48, 71, 0.1);
+
+  /* Base App Colors */
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Tailwind-like utility classes for Voluna colors */
+.text-voluna-primary { color: var(--voluna-primary); }
+.text-voluna-secondary { color: var(--voluna-secondary); }
+.text-voluna-accent { color: var(--voluna-accent); }
+.text-voluna-accent-hover { color: var(--voluna-accent-hover); }
+.text-voluna-background { color: var(--voluna-background); }
+.text-voluna-text { color: var(--voluna-text); }
+.text-voluna-text-light { color: var(--voluna-text-light); }
+
+.bg-voluna-primary { background-color: var(--voluna-primary); }
+.bg-voluna-secondary { background-color: var(--voluna-secondary); }
+.bg-voluna-accent { background-color: var(--voluna-accent); }
+.bg-voluna-accent-hover { background-color: var(--voluna-accent-hover); }
+.bg-voluna-background { background-color: var(--voluna-background); }
+
+.border-voluna-primary { border-color: var(--voluna-primary); }
+.border-voluna-secondary { border-color: var(--voluna-secondary); }
+.border-voluna-accent { border-color: var(--voluna-accent); }
+.border-voluna-background { border-color: var(--voluna-background); }
+
+.hover\:text-voluna-accent-hover:hover { color: var(--voluna-accent-hover); }
+.hover\:bg-voluna-accent-hover:hover { background-color: var(--voluna-accent-hover); }
+.hover\:bg-voluna-background:hover { background-color: var(--voluna-background); }
+.hover\:bg-voluna-secondary:hover { background-color: var(--voluna-secondary); }
+
+/* Focus states */
+.focus\:ring-voluna-accent:focus { --tw-ring-color: var(--voluna-accent); }
+.focus\:border-voluna-accent:focus { border-color: var(--voluna-accent); }
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Dark mode styles */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  
+  /* Dark mode Voluna colors */
+  --voluna-primary: #8ecae6;
+  --voluna-secondary: #219ebc;
+  --voluna-accent: #ff6b6b;
+  --voluna-accent-hover: #ff5252;
+  --voluna-background: #1a1a1a;
+  --voluna-text: #ededed;
+  --voluna-text-light: #ffffff;
+  --voluna-border: #374151;
+  --voluna-hover: #2a2a2a;
+  --voluna-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Light mode styles (default) */
+.light {
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Light mode Voluna colors */
+  --voluna-primary: #023047;
+  --voluna-secondary: #219ebc;
+  --voluna-accent: #C32937;
+  --voluna-accent-hover: #a01e2a;
+  --voluna-background: #8ecae6;
+  --voluna-text: #023047;
+  --voluna-text-light: #ffffff;
+  --voluna-border: #219ebc;
+  --voluna-hover: #8ecae6;
+  --voluna-shadow: rgba(2, 48, 71, 0.1);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Google Places Autocomplete Styles */
+.pac-container {
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 1000;
+}
+
+.pac-item {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.pac-item:hover {
+  background-color: #f3f4f6;
+}
+
+.pac-item-selected {
+  background-color: #e5e7eb;
+}
+
+.pac-matched {
+  font-weight: bold;
+  color: #059669;
+}
+
+/* Dark mode Google Places Autocomplete */
+.dark .pac-container {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.dark .pac-item {
+  color: #f9fafb;
+}
+
+.dark .pac-item:hover {
+  background-color: #374151;
+}
+
+.dark .pac-item-selected {
+  background-color: #4b5563;
+}
+
+.dark .pac-matched {
+  color: #10b981;
+}
+
+/* Additional dark mode utilities */
+.dark .shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dark .shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dark .shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure text is readable in dark mode */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #1f2937;
+  color: #f9fafb;
+  border-color: #374151;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: var(--voluna-accent);
+  box-shadow: 0 0 0 1px var(--voluna-accent);
+}
+
+/* Dark mode form elements */
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Background pattern for landing page */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+}

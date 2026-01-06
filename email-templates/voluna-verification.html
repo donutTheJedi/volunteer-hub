@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Your Voluna Account</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .logo {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.025em;
+        }
+        .content {
+            padding: 32px 24px;
+        }
+        .greeting {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 0 0 16px 0;
+        }
+        .message {
+            font-size: 16px;
+            color: #4b5563;
+            margin: 0 0 24px 0;
+            line-height: 1.6;
+        }
+        .button-container {
+            text-align: center;
+            margin: 32px 0;
+        }
+        .confirm-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+        .confirm-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+        }
+        .alternative {
+            margin-top: 24px;
+            padding: 20px;
+            background-color: #f3f4f6;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+        }
+        .alternative-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin: 0 0 8px 0;
+        }
+        .alternative-text {
+            font-size: 14px;
+            color: #6b7280;
+            margin: 0;
+        }
+        .footer {
+            background-color: #f9fafb;
+            padding: 24px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+        }
+        .footer-text {
+            font-size: 14px;
+            color: #6b7280;
+            margin: 0;
+        }
+        .security-note {
+            background-color: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 24px 0;
+        }
+        .security-note-text {
+            font-size: 14px;
+            color: #92400e;
+            margin: 0;
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #111827;
+            }
+            .container {
+                background-color: #1f2937;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            }
+            .greeting {
+                color: #f9fafb;
+            }
+            .message {
+                color: #d1d5db;
+            }
+            .alternative {
+                background-color: #374151;
+                border-left-color: #10b981;
+            }
+            .alternative-title {
+                color: #f3f4f6;
+            }
+            .alternative-text {
+                color: #9ca3af;
+            }
+            .footer {
+                background-color: #111827;
+                border-top-color: #374151;
+            }
+            .footer-text {
+                color: #9ca3af;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="logo">Voluna</h1>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <h2 class="greeting">Welcome to Voluna!</h2>
+            <p class="message">
+                Thank you for signing up! To complete your account setup and start your volunteering journey, 
+                please confirm your email address by clicking the button below.
+            </p>
+            
+            <div class="button-container">
+                <a href="{{ .ConfirmationURL }}" class="confirm-button">
+                    Confirm My Email Address
+                </a>
+            </div>
+            
+            <!-- Security Note -->
+            <div class="security-note">
+                <p class="security-note-text">
+                    <strong>Security Note:</strong> This link will expire in 24 hours for your security. 
+                    If you didn't create this account, you can safely ignore this email.
+                </p>
+            </div>
+            
+            <!-- Alternative Method -->
+            <div class="alternative">
+                <h3 class="alternative-title">Having trouble with the button?</h3>
+                <p class="alternative-text">
+                    Copy and paste this link into your browser:<br>
+                    <span style="word-break: break-all; color: #10b981;">{{ .ConfirmationURL }}</span>
+                </p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p class="footer-text">
+                This email was sent from Voluna. If you have any questions, please contact our support team.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
