@@ -2,7 +2,7 @@
 
 A volunteer management platform built with Next.js, Supabase, and TypeScript. This platform connects volunteers with organizations and opportunities, featuring multilingual support (English, Spanish, Portuguese), email notifications, roll-call functionality, and senior project management.
 
-**Note:** This project is no longer actively maintained and is provided as a portfolio piece.
+**Note:** This project is no longer actively maintained and is provided as a portfolio piece. All previous comits are hidden due to security concerns
 
 ## License
 
